@@ -5,7 +5,7 @@ output "automq_byoc_env_id" {
 
 output "automq_byoc_endpoint" {
   description = "The endpoint for the AutoMQ environment console. Users can set this endpoint to the AutoMQ Terraform Provider to manage resources through Terraform. Additionally, users can access this endpoint via web browser, log in, and manage resources within the environment using the WebUI."
-  value       = "http://${huaweicloud_compute_instance.automq_byoc_console.access_ip_v4}:8080"
+  value       = "http://${huaweicloud_vpc_eip.automq_byoc_eip.address}:8080"
 }
 
 output "automq_byoc_initial_username" {

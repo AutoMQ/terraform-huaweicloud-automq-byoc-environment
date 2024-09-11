@@ -5,8 +5,9 @@ This module is designed for deploying the AutoMQ BYOC (Bring Your Own Cloud) env
 
 Upon completion of the installation, the module will output the endpoint of the AutoMQ BYOC environment along with the initial username and password. Users can manage the resources within the environment through the following two methods:
 
-Using the Web UI to manage resources: This method allows users to manage instances, topics, ACLs, and other resources through a web-ui.
-Using Terraform to manage resources: This method requires users to access the AutoMQ BYOC environment via a web browser for the first time to create a Service Account. Subsequently, users can manage resources within the environment using the Service Account's Access Key and the AutoMQ Terraform Provider.
+* Using the Web UI to manage resources: This method allows users to manage instances, topics, ACLs, and other resources through a web-ui.
+* Using Terraform to manage resources: This method requires users to access the AutoMQ BYOC environment via a web browser for the first time to create a Service Account. Subsequently, users can manage resources within the environment using the Service Account's Access Key and the AutoMQ Terraform Provider.
+
 For managing instances, topics, and other resources within the AutoMQ BYOC environment using the AutoMQ Terraform Provider, please refer to the documentation.
 
 # Module Usage
