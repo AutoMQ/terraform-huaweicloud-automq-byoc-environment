@@ -1,3 +1,69 @@
+# HuaweiCloud AutoMQ BYOC Environment Terrafrom module
+
+
+This module is designed for deploying the AutoMQ BYOC (Bring Your Own Cloud) environment using the HuaweiCloud Provider within an HuaweiCloud environment.
+
+Upon completion of the installation, the module will output the endpoint of the AutoMQ BYOC environment along with the initial username and password. Users can manage the resources within the environment through the following two methods:
+
+Using the Web UI to manage resources: This method allows users to manage instances, topics, ACLs, and other resources through a web-ui.
+Using Terraform to manage resources: This method requires users to access the AutoMQ BYOC environment via a web browser for the first time to create a Service Account. Subsequently, users can manage resources within the environment using the Service Account's Access Key and the AutoMQ Terraform Provider.
+For managing instances, topics, and other resources within the AutoMQ BYOC environment using the AutoMQ Terraform Provider, please refer to the documentation.
+
+# Module Usage
+Use this module to install the AutoMQ BYOC environment, supporting two modes:
+
+* Create a new VPC: Recommended only for POC or other testing scenarios. In this mode, the user only needs to specify the region, and resources including VPC, Endpoint, Security Group, OBS Bucket, etc., will be created. After testing, all resources can be destroyed with one click.
+* Using an existing VPC: Recommended for production environments. In this mode, the user needs to provide a VPC, subnet, and OBS Bucket that meet the requirements. AutoMQ will deploy the BYOC environment console to the user-specified subnet.
+
+
+# Create a new VPC
+
+```
+module "automq_byoc" {
+  source = "AutoMQ/automq-byoc-environment/huaweicloud"
+
+  # Set the identifier for the environment to be installed. This ID will be used for naming internal resources. The environment ID supports only uppercase and lowercase English letters, numbers, and hyphens (-). It must start with a letter and is limited to a length of 32 characters.
+  automq_byoc_env_id                       = "example" 
+
+  # Set the target regionId of aws
+  cloud_provider_region                    = "ap-southeast-1"  
+}
+
+# Necessary outputs
+output "automq_byoc_env_id" {
+  description = "This parameter is used to create resources within the environment."
+  value = module.automq-byoc.automq_byoc_env_id
+}
+
+output "automq_byoc_endpoint" {
+  description = "Address accessed by AutoMQ BYOC service"
+  value = module.automq-byoc.automq_byoc_endpoint
+}
+
+output "automq_byoc_initial_username" {
+  description = "The initial username for the AutoMQ environment console. It has the `EnvironmentAdmin` role permissions. This account is used to log in to the environment, create ServiceAccounts, and manage other resources. For detailed information about environment members, please refer to the [documentation](https://docs.automq.com/automq-cloud/manage-identities-and-access/member-accounts)."
+  value = "admin"
+}
+
+output "automq_byoc_initial_password" {
+  description = "The initial password for the AutoMQ environment console. This account is used to log in to the environment, create ServiceAccounts, and manage other resources. For detailed information about environment members, please refer to the [documentation](https://docs.automq.com/automq-cloud/manage-identities-and-access/member-accounts)."
+  value = module.automq-byoc.automq_byoc_initial_password
+}
+
+output "automq_byoc_vpc_id" {
+  description = "The VPC ID for the AutoMQ environment deployment."
+  value = module.automq-byoc.automq_byoc_vpc_id
+}
+
+output "automq_byoc_instance_id" {
+  description = "AutoMQ BYOC Console instance ID."
+  value = module.automq-byoc.automq_byoc_instance_id
+}
+
+```
+
+
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
