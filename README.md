@@ -54,7 +54,7 @@ No modules.
 | <a name="input_automq_byoc_ecs_instance_type"></a> [automq_byoc_ecs_instance_type](#input_automq_byoc_ecs_instance_type) | Set the ECS instance type; this parameter is used only for deploying the AutoMQ environment console. You need to provide an ECS instance type with at least 2 cores and 8 GB of memory. | `string` | `"s6.large.2"` | no |
 | <a name="input_automq_byoc_env_version"></a> [automq_byoc_env_version](#input_automq_byoc_env_version) | Set the version for the AutoMQ BYOC environment console. It is recommended to keep the default value, which is the latest version. Historical release note reference [document](https://docs.automq.com/automq-cloud/release-notes). | `string` | `"latest"` | no |
 | <a name="input_automq_byoc_env_console_ami_name"></a> [automq_byoc_env_console_ami_name](#input_automq_byoc_env_console_ami_name) | When parameter `specified_ami_by_marketplace` set to false, this parameter must set a custom AMI to deploy automq console. | `string` | `""` | no |
-| <a name="input_automq_byoc_identity_agency_name"></a> [automq_byoc_identity_agency_name](#input_automq_byoc_identity_agency_name) | n/a | `string` | `""` | no |
+| <a name="input_automq_byoc_identity_agency_name"></a> [automq_byoc_identity_agency_name](#input_automq_byoc_identity_agency_name) | Set the agency name for the AutoMQ BYOC environment console. If not set, a new agency will be automatically created. | `string` | `""` | no |
 
 ## Outputs
 
