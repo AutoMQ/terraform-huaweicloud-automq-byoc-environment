@@ -27,8 +27,10 @@ module "automq_byoc" {
   # Set the identifier for the environment to be installed. This ID will be used for naming internal resources. The environment ID supports only uppercase and lowercase English letters, numbers, and hyphens (-). It must start with a letter and is limited to a length of 32 characters.
   automq_byoc_env_id                       = "example" 
 
-  # Set the target regionId of aws
-  cloud_provider_region                    = "ap-southeast-1"  
+  # Set the target regionId of huaweicloud
+  cloud_provider_region                    = "cn-north-4"
+
+  automq_byoc_env_console_ami_name = "AutoMQ-control-center-Test-0.0.1-SNAPSHOT-2024-09-11-05.53-x86_64"
 }
 
 # Necessary outputs
