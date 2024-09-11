@@ -86,7 +86,7 @@ resource "huaweicloud_identity_agency" "automq_byoc_agency" {
   description            = "Agency for AutoMQ BYOC"
   delegated_service_name = "op_svc_ecs"
 
-  all_resources_roles = ["", "OBS Administrator", "DNS FullAccess", "AutoScaling FullAccess", "IMS FullAccess", "VPC FullAccess"]
+  all_resources_roles = ["ECS FullAccess", "OBS Administrator", "DNS FullAccess", "AutoScaling FullAccess", "IMS FullAccess", "VPC FullAccess"]
 }
 
 # DNS Zone 

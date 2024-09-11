@@ -68,6 +68,7 @@ variable "automq_byoc_env_console_ami_name" {
 
 
 variable "automq_byoc_identity_agency_name" {
+  description = "Set the agency name for the AutoMQ BYOC environment console. If not set, a new agency will be automatically created."
   type        = string
   default     = ""
 }
