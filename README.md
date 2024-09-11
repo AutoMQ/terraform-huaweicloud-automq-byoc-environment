@@ -1,5 +1,6 @@
 # HuaweiCloud AutoMQ BYOC Environment Terrafrom module
 
+![Preview](https://img.shields.io/badge/Lifecycle_Stage-Preview-blue?style=flat&logoColor=8A3BE2&labelColor=rgba)
 
 This module is designed for deploying the AutoMQ BYOC (Bring Your Own Cloud) environment using the HuaweiCloud Provider within an HuaweiCloud environment.
 
@@ -8,7 +9,7 @@ Upon completion of the installation, the module will output the endpoint of the 
 * Using the Web UI to manage resources: This method allows users to manage instances, topics, ACLs, and other resources through a web-ui.
 * Using Terraform to manage resources: This method requires users to access the AutoMQ BYOC environment via a web browser for the first time to create a Service Account. Subsequently, users can manage resources within the environment using the Service Account's Access Key and the AutoMQ Terraform Provider.
 
-For managing instances, topics, and other resources within the AutoMQ BYOC environment using the AutoMQ Terraform Provider, please refer to the documentation.
+For managing instances, topics, and other resources within the AutoMQ BYOC environment using the AutoMQ Terraform Provider, please refer to the [documentation](https://registry.terraform.io/providers/AutoMQ/automq/latest/docs).
 
 # Module Usage
 Use this module to install the AutoMQ BYOC environment, supporting two modes:
@@ -19,7 +20,7 @@ Use this module to install the AutoMQ BYOC environment, supporting two modes:
 
 # Create a new VPC
 
-```
+```terraform
 module "automq_byoc" {
   source = "AutoMQ/automq-byoc-environment/huaweicloud"
 
