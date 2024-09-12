@@ -30,41 +30,45 @@ module "automq_byoc" {
   # Set the target regionId of huaweicloud
   cloud_provider_region                    = "cn-north-4"
 
-  automq_byoc_env_console_ami_name = "AutoMQ-control-center-Test-0.0.1-SNAPSHOT-2024-09-11-05.53-x86_64"
+  automq_byoc_env_console_ami_name = "AutoMQ-control-center-Poc-1.2.5-rc0-x86_64"
 }
 
 # Necessary outputs
 output "automq_byoc_env_id" {
-  description = "This parameter is used to create resources within the environment."
   value = module.automq-byoc.automq_byoc_env_id
 }
 
 output "automq_byoc_endpoint" {
-  description = "Address accessed by AutoMQ BYOC service"
   value = module.automq-byoc.automq_byoc_endpoint
 }
 
 output "automq_byoc_initial_username" {
-  description = "The initial username for the AutoMQ environment console. It has the `EnvironmentAdmin` role permissions. This account is used to log in to the environment, create ServiceAccounts, and manage other resources. For detailed information about environment members, please refer to the [documentation](https://docs.automq.com/automq-cloud/manage-identities-and-access/member-accounts)."
-  value = "admin"
+  value = module.automq-byoc.automq_byoc_initial_username
 }
 
 output "automq_byoc_initial_password" {
-  description = "The initial password for the AutoMQ environment console. This account is used to log in to the environment, create ServiceAccounts, and manage other resources. For detailed information about environment members, please refer to the [documentation](https://docs.automq.com/automq-cloud/manage-identities-and-access/member-accounts)."
   value = module.automq-byoc.automq_byoc_initial_password
 }
 
 output "automq_byoc_vpc_id" {
-  description = "The VPC ID for the AutoMQ environment deployment."
   value = module.automq-byoc.automq_byoc_vpc_id
 }
 
 output "automq_byoc_instance_id" {
-  description = "AutoMQ BYOC Console instance ID."
   value = module.automq-byoc.automq_byoc_instance_id
 }
 
 ```
+
+
+
+# Helpful Links/Information
+
+* [Report Bugs](https://github.com/AutoMQ/terraform-huaweicloud-automq-byoc-environment/issues)
+
+* [AutoMQ Cloud Documents](https://docs.automq.com/automq-cloud/overview)
+
+* [Request Features](https://automq66.feishu.cn/share/base/form/shrcn7qXbb5aKiYbKqbJtPlGWXc)
 
 
 
@@ -115,8 +119,8 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_automq_byoc_env_id"></a> [automq_byoc_env_id](#input_automq_byoc_env_id) | The unique identifier of the AutoMQ environment. This parameter is used to create resources within the environment. Additionally, all cloud resource names will incorporate this parameter as part of their names. This parameter supports only numbers, uppercase and lowercase English letters, and hyphens. It must start with a letter and is limited to a length of 32 characters. | `string` | n/a | yes |
 | <a name="input_cloud_provider_region"></a> [cloud_provider_region](#input_cloud_provider_region) | Set the cloud provider's region. AutoMQ will deploy to this region. | `string` | n/a | yes |
-| <a name="input_create_new_vpc"></a> [create_new_vpc](#input_create_new_vpc) | This setting determines whether to create a new VPC. If set to true, a new VPC spanning three availability zones will be automatically created, which is recommended only for POC scenarios. For production scenario using AutoMQ, you should provide the VPC where the current Kafka application resides and check the current VPC against the requirements specified in the [Prepare VPC Documents](https://docs.automq.com/automq-cloud/getting-started/install-byoc-environment/aws/prepare-vpc). | `bool` | `true` | no |
-| <a name="input_automq_byoc_vpc_id"></a> [automq_byoc_vpc_id](#input_automq_byoc_vpc_id) | When the `create_new_vpc` parameter is set to `false`, this parameter needs to be set. Specify an existing VPC where AutoMQ will be deployed. When providing an existing VPC, ensure that the VPC meets [AutoMQ's requirements](https://docs.automq.com/automq-cloud/getting-started/install-byoc-environment/aws/prepare-vpc). | `string` | `""` | no |
+| <a name="input_create_new_vpc"></a> [create_new_vpc](#input_create_new_vpc) | This setting determines whether to create a new VPC. If set to true, a new VPC spanning three availability zones will be automatically created, which is recommended only for POC scenarios. | `bool` | `true` | no |
+| <a name="input_automq_byoc_vpc_id"></a> [automq_byoc_vpc_id](#input_automq_byoc_vpc_id) | When the `create_new_vpc` parameter is set to `false`, this parameter needs to be set. Specify an existing VPC where AutoMQ will be deployed. | `string` | `""` | no |
 | <a name="input_automq_byoc_env_console_public_subnet_id"></a> [automq_byoc_env_console_public_subnet_id](#input_automq_byoc_env_console_public_subnet_id) | When the `create_new_vpc` parameter is set to `false`, this parameter needs to be set. Select a subnet for deploying the AutoMQ BYOC environment console. Ensure that the chosen subnet supports public access. | `string` | `""` | no |
 | <a name="input_automq_byoc_env_console_cidr"></a> [automq_byoc_env_console_cidr](#input_automq_byoc_env_console_cidr) | Set CIDR block to restrict the source IP address range for accessing the AutoMQ environment console. If not set, the default is 0.0.0.0/0. | `string` | `"0.0.0.0/0"` | no |
 | <a name="input_automq_byoc_data_bucket_name"></a> [automq_byoc_data_bucket_name](#input_automq_byoc_data_bucket_name) | Set the existed OBS bucket used to store message data generated by applications. If this parameter is not set, a new OBS bucket will be automatically created. The message data Bucket must be separate from the Ops Bucket. | `string` | `""` | no |

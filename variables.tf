@@ -13,13 +13,13 @@ variable "cloud_provider_region" {
 }
 
 variable "create_new_vpc" {
-  description = "This setting determines whether to create a new VPC. If set to true, a new VPC spanning three availability zones will be automatically created, which is recommended only for POC scenarios. For production scenario using AutoMQ, you should provide the VPC where the current Kafka application resides and check the current VPC against the requirements specified in the [Prepare VPC Documents](https://docs.automq.com/automq-cloud/getting-started/install-byoc-environment/aws/prepare-vpc)."
+  description = "This setting determines whether to create a new VPC. If set to true, a new VPC spanning three availability zones will be automatically created, which is recommended only for POC scenarios."
   type        = bool
   default     = true
 }
 
 variable "automq_byoc_vpc_id" {
-  description = "When the `create_new_vpc` parameter is set to `false`, this parameter needs to be set. Specify an existing VPC where AutoMQ will be deployed. When providing an existing VPC, ensure that the VPC meets [AutoMQ's requirements](https://docs.automq.com/automq-cloud/getting-started/install-byoc-environment/aws/prepare-vpc)."
+  description = "When the `create_new_vpc` parameter is set to `false`, this parameter needs to be set. Specify an existing VPC where AutoMQ will be deployed."
   type        = string
   default     = ""
 }
