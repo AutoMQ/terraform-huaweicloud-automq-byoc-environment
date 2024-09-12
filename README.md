@@ -35,27 +35,27 @@ module "automq_byoc" {
 
 # Necessary outputs
 output "automq_byoc_env_id" {
-  value = module.automq-byoc.automq_byoc_env_id
+  value = module.automq_byoc.automq_byoc_env_id
 }
 
 output "automq_byoc_endpoint" {
-  value = module.automq-byoc.automq_byoc_endpoint
+  value = module.automq_byoc.automq_byoc_endpoint
 }
 
 output "automq_byoc_initial_username" {
-  value = module.automq-byoc.automq_byoc_initial_username
+  value = module.automq_byoc.automq_byoc_initial_username
 }
 
 output "automq_byoc_initial_password" {
-  value = module.automq-byoc.automq_byoc_initial_password
+  value = module.automq_byoc.automq_byoc_initial_password
 }
 
 output "automq_byoc_vpc_id" {
-  value = module.automq-byoc.automq_byoc_vpc_id
+  value = module.automq_byoc.automq_byoc_vpc_id
 }
 
 output "automq_byoc_instance_id" {
-  value = module.automq-byoc.automq_byoc_instance_id
+  value = module.automq_byoc.automq_byoc_instance_id
 }
 
 ```
