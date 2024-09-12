@@ -27,6 +27,24 @@ resource "huaweicloud_obs_bucket" "automq_byoc_ops_bucket" {
     automqVendor        = "automq"
     automqEnvironmentID = var.automq_byoc_env_id
   }
+
+  lifecycle_rule {
+    enabled = true
+    name    = "automq-${md5("automq/logs")}"
+    prefix  = "automq/logs"
+    expiration {
+      days = 7
+    }
+  }
+
+  lifecycle_rule {
+    enabled = true
+    name    = "automq-${md5("automq/metering")}"
+    prefix  = "automq/metering"
+    expiration {
+      days = 7
+    }
+  }
 }
 
 data "huaweicloud_availability_zones" "zones" {}
@@ -86,7 +104,7 @@ resource "huaweicloud_identity_agency" "automq_byoc_agency" {
   description            = "Agency for AutoMQ BYOC"
   delegated_service_name = "op_svc_ecs"
 
-  all_resources_roles = ["ECS FullAccess", "OBS Administrator", "DNS FullAccess", "AutoScaling FullAccess", "IMS FullAccess", "VPC FullAccess"]
+  all_resources_roles = ["ECS FullAccess", "OBS Administrator", "DNS FullAccess", "AutoScaling FullAccess", "IMS FullAccess", "VPC Administrator"]
 }
 
 # DNS Zone 
