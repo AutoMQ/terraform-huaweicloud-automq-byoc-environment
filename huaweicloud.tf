@@ -123,6 +123,8 @@ resource "huaweicloud_dns_zone" "private_zone" {
   }
 }
 
+data "huaweicloud_account" "current" {}
+
 # Locals
 locals {
   automq_byoc_vpc_id                       = var.create_new_vpc ? huaweicloud_vpc.automq_byoc_vpc[0].id : var.automq_byoc_vpc_id

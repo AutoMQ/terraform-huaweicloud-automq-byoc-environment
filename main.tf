@@ -24,7 +24,8 @@ resource "huaweicloud_compute_instance" "automq_byoc_console" {
     automq_ops_bucket           = local.automq_ops_bucket,
     instance_security_group_id  = huaweicloud_networking_secgroup.automq_byoc_console_sg.id,
     instance_dns                = huaweicloud_dns_zone.private_zone.id,
-    environment_id              = var.automq_byoc_env_id
+    environment_id              = var.automq_byoc_env_id,
+    huaweicloud_account_id      = data.huaweicloud_account.current.id,
   }))
 }
 

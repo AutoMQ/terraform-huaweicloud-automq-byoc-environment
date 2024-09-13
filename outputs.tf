@@ -67,3 +67,7 @@ output "automq_byoc_env_console_cidr" {
   description = "AutoMQ BYOC security group CIDR."
   value       = var.automq_byoc_env_console_cidr
 }
+
+output "automq_byoc_huaweicloud_current_account_id" {
+  value = data.huaweicloud_account.current.id
+}
