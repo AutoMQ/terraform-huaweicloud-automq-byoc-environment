@@ -30,7 +30,7 @@ module "automq_byoc" {
   # Set the target regionId of huaweicloud
   cloud_provider_region                    = "cn-north-4"
 
-  automq_byoc_env_console_ami_name = "AutoMQ-control-center-Poc-1.2.5-rc0-x86_64"
+  automq_byoc_env_console_ami_name = "AutoMQ-control-center-Poc-1.2.5-rc1-x86_64"
 }
 
 # Necessary outputs
