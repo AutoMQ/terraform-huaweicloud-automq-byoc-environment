@@ -98,13 +98,35 @@ resource "huaweicloud_networking_secgroup_rule" "allow_8080" {
   remote_ip_prefix  = var.automq_byoc_env_console_cidr
 }
 
+resource "huaweicloud_identity_role" "automq_byoc_policy" {
+  name        = "automq-byoc-policy-${var.automq_byoc_env_id}"
+  description = "Policy for AutoMQ BYOC"
+  type        = "XA"
+  policy      = file("${path.module}/tpls/policy.json")
+}
+
+resource "huaweicloud_identity_role" "automq_byoc_obs_policy" {
+  name        = "automq-byoc-ecs-policy-${var.automq_byoc_env_id}"
+  description = "HUAWEI CLOUD OBS policy for AutoMQ BYOC"
+  type        = "AX"
+  policy      = templatefile("${path.module}/tpls/obs_policy.json", 
+    {
+      automq_data_bucket = local.automq_data_bucket,
+      automq_ops_bucket  = local.automq_ops_bucket,
+    }
+  )
+}
+
 resource "huaweicloud_identity_agency" "automq_byoc_agency" {
   count                  = var.automq_byoc_identity_agency_name == "" ? 1 : 0
   name                   = "automq-byoc-agency-${var.automq_byoc_env_id}"
   description            = "Agency for AutoMQ BYOC"
   delegated_service_name = "op_svc_ecs"
 
-  all_resources_roles = ["ECS FullAccess", "OBS Administrator", "DNS FullAccess", "AutoScaling FullAccess", "IMS FullAccess", "VPC Administrator"]
+  all_resources_roles = [
+    huaweicloud_identity_role.automq_byoc_policy.name,
+    huaweicloud_identity_role.automq_byoc_obs_policy.name,
+  ]
 }
 
 # DNS Zone 

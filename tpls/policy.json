@@ -1,0 +1,232 @@
+{
+    "Version": "1.1",
+    "Statement": [
+        {
+            "Action": [
+                "kps:domainKeypairs:*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dns:recordset:delete",
+                "dns:recordset:create",
+                "dns:zone:create",
+                "dns:recordset:get",
+                "dns:zone:list",
+                "dns:recordset:list",
+                "dns:zone:get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ces:siteMonitorRule:delete",
+                "ces:remoteChecks:list",
+                "ces:remoteCheckSites:list",
+                "ces:siteMonitorRule:create",
+                "ces:siteMonitorRule:put",
+                "ces:siteMonitorHealthCheck:get",
+                "ces:siteMonitorHealthCheck:create"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ims:images:get",
+                "ims:quotas:get",
+                "ims:images:list"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:cloudServerFlavors:get",
+                "ecs:cloudServers:get",
+                "ecs:recycleBin:get",
+                "ecs:serverInterfaces:get",
+                "ecs:serverKeypairs:get",
+                "ecs:quotas:get",
+                "ecs:cloudServerQuotas:get",
+                "ecs:flavors:get",
+                "ecs:serverVolumeAttachments:get",
+                "ecs:cloudServers:detachVolume",
+                "ecs:cloudServerFpgaImages:list",
+                "ecs:servers:getTags",
+                "ecs:servers:get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:servers:stop",
+                "ecs:diskConfigs:use",
+                "ecs:servers:reboot",
+                "ecs:serverVolumes:use",
+                "ecs:securityGroups:use"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:cloudServers:reboot",
+                "ecs:cloudServers:changeOS",
+                "ecs:cloudServers:deleteServers",
+                "ecs:cloudServers:stop",
+                "ecs:cloudServers:createServers",
+                "ecs:cloudServers:attach"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "g:ResourceTag/automqVendor": [
+                        "automq"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:networks:list",
+                "ecs:cloudServers:showServer",
+                "ecs:recycleBin:listServers",
+                "ecs:servers:list",
+                "ecs:cloudServers:showServerTags",
+                "ecs:cloudServers:list",
+                "ecs:instanceScheduledEvents:list",
+                "ecs:serverKeypairs:list",
+                "ecs:serverVolumeAttachments:list",
+                "ecs:availabilityZones:list"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "vpc:firewalls:get",
+                "vpc:routeTables:get",
+                "vpc:routes:get",
+                "vpc:bandwidths:get",
+                "vpc:addressGroups:get",
+                "vpc:vpcs:get",
+                "vpc:flowLogs:get",
+                "vpc:subNetworkInterfaces:get",
+                "vpc:publicIps:get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "vpc:securityGroupRules:create",
+                "vpc:securityGroups:create",
+                "vpc:securityGroupRules:delete",
+                "vpc:securityGroups:delete",
+                "vpc:securityGroups:update",
+                "vpc:securityGroupRules:update",
+                "vpc:publicIps:create",
+                "vpc:securityGroupTags:create"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "vpc:routes:list",
+                "vpc:firewallTags:get",
+                "vpc:firewallRules:get",
+                "vpc:peerings:get",
+                "vpc:vpcTags:get",
+                "vpc:vpcs:list",
+                "vpc:networks:get",
+                "vpc:floatingIps:get",
+                "vpc:ports:get",
+                "vpc:firewalls:list",
+                "vpc:privateIps:list",
+                "vpc:quotas:list",
+                "vpc:addressGroups:list",
+                "vpc:privateIps:get",
+                "vpc:subnetTags:get",
+                "vpc:routeTables:list",
+                "vpc:firewallPolicies:get",
+                "vpc:bandwidths:list",
+                "vpc:securityGroupRules:get",
+                "vpc:flowLogs:list",
+                "vpc:subnets:get",
+                "vpc:addressGroupTags:get",
+                "vpc:routers:get",
+                "vpc:publicIps:list",
+                "vpc:securityGroups:get",
+                "vpc:firewallGroups:get",
+                "vpc:publicipTags:get",
+                "vpc:subNetworkInterfaces:list"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "evs:types:get",
+                "evs:backupTags:get",
+                "evs:volumeTags:getById",
+                "evs:retypePolicy:get",
+                "evs:transfers:get",
+                "evs:backups:get",
+                "evs:recycle_policy:get",
+                "evs:quotas:get",
+                "evs:volumeTags:get",
+                "evs:volumes:get",
+                "evs:snapshots:get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "evs:volumeTags:create",
+                "evs:volumeTags:update",
+                "evs:volumes:create",
+                "evs:volumes:delete",
+                "evs:volumes:use"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "evs:transfers:list",
+                "evs:snapshots:list",
+                "evs:volumeTags:list",
+                "evs:volumes:list",
+                "evs:sharedBackups:list",
+                "evs:backupTags:list",
+                "evs:backups:list"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "as:tags:get",
+                "as:configs:get",
+                "as:groups:get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "as:configs:create",
+                "as:groups:delete",
+                "as:groups:update",
+                "as:instances:batchAction",
+                "as:groups:create",
+                "as:configs:delete",
+                "as:groups:action"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "as:tagResources:list",
+                "as:tags:list",
+                "as:configs:list",
+                "as:groups:list",
+                "as:instances:list"
+            ]
+        }
+    ]
+}
