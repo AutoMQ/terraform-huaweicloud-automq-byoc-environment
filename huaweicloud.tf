@@ -118,7 +118,6 @@ resource "huaweicloud_identity_role" "automq_byoc_obs_policy" {
 }
 
 resource "huaweicloud_identity_agency" "automq_byoc_agency" {
-  count                  = var.automq_byoc_identity_agency_name == "" ? 1 : 0
   name                   = "automq-byoc-agency-${var.automq_byoc_env_id}"
   description            = "Agency for AutoMQ BYOC"
   delegated_service_name = "op_svc_ecs"
@@ -153,7 +152,7 @@ locals {
   automq_byoc_env_console_public_subnet_id = var.create_new_vpc ? huaweicloud_vpc_subnet.public_subnet[0].id : var.automq_byoc_env_console_public_subnet_id
   automq_data_bucket                       = var.automq_byoc_data_bucket_name == "" ? huaweicloud_obs_bucket.automq_byoc_data_bucket[0].bucket : var.automq_byoc_data_bucket_name
   automq_ops_bucket                        = var.automq_byoc_ops_bucket_name == "" ? huaweicloud_obs_bucket.automq_byoc_ops_bucket[0].bucket : var.automq_byoc_ops_bucket_name
-  agency_name                              = var.automq_byoc_identity_agency_name == "" ? huaweicloud_identity_agency.automq_byoc_agency[0].name : var.automq_byoc_identity_agency_name
+  automq_image_name                     = var.use_custom_ami ? var.automq_byoc_env_console_ami : format("AutoMQ-control-center-Prod-%s-x86_64", var.automq_byoc_env_version)
 }
 
 # Data sources
@@ -166,6 +165,6 @@ data "huaweicloud_vpc_subnet" "public_subnet_info" {
 }
 
 data "huaweicloud_images_image" "automq_byoc_console_ami" {
-  name        = var.automq_byoc_env_console_ami_name
+  name        = local.automq_image_name
   most_recent = true
 }
