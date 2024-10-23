@@ -16,10 +16,10 @@ resource "huaweicloud_compute_instance" "automq_byoc_console" {
     automqEnvironmentID = var.automq_byoc_env_id
   }
 
-  agency_name = local.agency_name
+  agency_name = huaweicloud_identity_agency.automq_byoc_agency.name
 
   user_data = base64encode(templatefile("${path.module}/tpls/userdata.tpl", {
-    huaweicloud_iam_agency_name = local.agency_name
+    huaweicloud_iam_agency_name = huaweicloud_identity_agency.automq_byoc_agency.name
     automq_data_bucket          = local.automq_data_bucket,
     automq_ops_bucket           = local.automq_ops_bucket,
     instance_security_group_id  = huaweicloud_networking_secgroup.automq_byoc_console_sg.id,

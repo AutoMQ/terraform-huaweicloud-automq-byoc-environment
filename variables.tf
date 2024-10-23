@@ -57,18 +57,17 @@ variable "automq_byoc_ecs_instance_type" {
 variable "automq_byoc_env_version" {
   description = "Set the version for the AutoMQ BYOC environment console. It is recommended to keep the default value, which is the latest version. Historical release note reference [document](https://docs.automq.com/automq-cloud/release-notes)."
   type        = string
-  default     = "latest"
+  default     = "1.3.5"
 }
 
-variable "automq_byoc_env_console_ami_name" {
-  description = "When parameter `specified_ami_by_marketplace` set to false, this parameter must set a custom AMI to deploy automq console."
-  type        = string
-  default     = ""
+variable "use_custom_ami" {
+  description = "The parameter defaults to false, which means a specific AMI is not specified. If you wish to use a custom AMI, set this parameter to true and specify the `automq_byoc_env_console_ami` parameter with your custom AMI ID."
+  type        = bool
+  default     = false
 }
 
-
-variable "automq_byoc_identity_agency_name" {
-  description = "Set the agency name for the AutoMQ BYOC environment console. If not set, a new agency will be automatically created."
+variable "automq_byoc_env_console_ami" {
+  description = "When the `use_custom_ami` parameter is set to true, this parameter must be set with a custom AMI Name to deploy the AutoMQ console."
   type        = string
   default     = ""
 }

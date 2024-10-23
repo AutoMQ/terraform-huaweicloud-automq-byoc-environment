@@ -55,7 +55,7 @@ output "automq_byoc_security_group_name" {
 
 output "automq_byoc_agency_name" {
   description = "AutoMQ BYOC is bound to the agency of the Console."
-  value       = local.agency_name
+  value       = huaweicloud_identity_agency.automq_byoc_agency.name
 }
 
 output "automq_byoc_vpc_dns_zone_id" {
