@@ -71,3 +71,15 @@ variable "automq_byoc_env_console_ami" {
   type        = string
   default     = ""
 }
+
+variable "automq_byoc_default_deploy_type" {
+  description = "Set the default deployment type for the AutoMQ BYOC environment. The default value is vm. The supported values are vm and k8s."
+  type        = string
+  default     = "vm"
+}
+
+variable "automq_byoc_default_k8s_cluster_id" {
+  description = "Set the default K8s cluster ID for the AutoMQ BYOC environment. This parameter is required when the `automq_byoc_default_deploy_type` parameter is set to k8s."
+  type        = string
+  default     = ""
+}
