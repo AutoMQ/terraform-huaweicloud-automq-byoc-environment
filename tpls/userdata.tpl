@@ -11,4 +11,5 @@ bootcmd:
       echo 'cmp.provider.instanceDNS=${instance_dns}' >> /opt/cmp/config.properties
       echo 'cmp.provider.instanceProfile=${huaweicloud_iam_agency_name}' >> /opt/cmp/config.properties
       echo 'cmp.environmentId=${environment_id}' >> /opt/cmp/config.properties
+      echo 'cmp.provider.deployType=${deploy_type}' >> /opt/cmp/config.properties
     fi
