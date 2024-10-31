@@ -77,9 +77,3 @@ variable "automq_byoc_default_deploy_type" {
   type        = string
   default     = "vm"
 }
-
-variable "automq_byoc_default_k8s_cluster_id" {
-  description = "Set the default K8s cluster ID for the AutoMQ BYOC environment. This parameter is required when the `automq_byoc_default_deploy_type` parameter is set to k8s."
-  type        = string
-  default     = ""
-}
