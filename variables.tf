@@ -77,3 +77,8 @@ variable "automq_byoc_default_deploy_type" {
   type        = string
   default     = "vm"
 }
+
+variable "automq_byoc_key_pair" {
+  description = "Set the key pair name for the AutoMQ BYOC environment. The key pair is used to access the AutoMQ environment console."
+  type        = string
+}

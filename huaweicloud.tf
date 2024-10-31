@@ -98,6 +98,16 @@ resource "huaweicloud_networking_secgroup_rule" "allow_8080" {
   remote_ip_prefix  = var.automq_byoc_env_console_cidr
 }
 
+resource "huaweicloud_networking_secgroup_rule" "allow_22" {
+  security_group_id = huaweicloud_networking_secgroup.automq_byoc_console_sg.id
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = var.automq_byoc_env_console_cidr
+}
+
 resource "huaweicloud_identity_role" "automq_byoc_policy" {
   name        = "automq-byoc-policy-${var.automq_byoc_env_id}"
   description = "Policy for AutoMQ BYOC"
