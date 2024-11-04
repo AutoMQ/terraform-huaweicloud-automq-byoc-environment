@@ -108,15 +108,24 @@ resource "huaweicloud_networking_secgroup_rule" "allow_22" {
   remote_ip_prefix  = var.automq_byoc_env_console_cidr
 }
 
-resource "huaweicloud_identity_role" "automq_byoc_policy" {
+resource "huaweicloud_identity_role" "automq_byoc_vm_policy" {
+  count = var.automq_byoc_default_deploy_type == "k8s" ? 0 : 1
   name        = "automq-byoc-policy-${var.automq_byoc_env_id}"
   description = "Policy for AutoMQ BYOC"
   type        = "XA"
-  policy      = file("${path.module}/tpls/policy.json")
+  policy      = file("${path.module}/tpls/vm_policy.json")
+}
+
+resource "huaweicloud_identity_role" "automq_byoc_k8s_policy" {
+  count = var.automq_byoc_default_deploy_type == "k8s" ? 1 : 0
+  name        = "automq-byoc-policy-${var.automq_byoc_env_id}"
+  description = "Policy for AutoMQ BYOC"
+  type        = "XA"
+  policy      = file("${path.module}/tpls/k8s_policy.json")
 }
 
 resource "huaweicloud_identity_role" "automq_byoc_obs_policy" {
-  name        = "automq-byoc-ecs-policy-${var.automq_byoc_env_id}"
+  name        = "automq-byoc-obs-policy-${var.automq_byoc_env_id}"
   description = "HUAWEI CLOUD OBS policy for AutoMQ BYOC"
   type        = "AX"
   policy      = templatefile("${path.module}/tpls/obs_policy.json", 
@@ -132,9 +141,12 @@ resource "huaweicloud_identity_agency" "automq_byoc_agency" {
   description            = "Agency for AutoMQ BYOC"
   delegated_service_name = "op_svc_ecs"
 
-  all_resources_roles = [
-    huaweicloud_identity_role.automq_byoc_policy.name,
-    huaweicloud_identity_role.automq_byoc_obs_policy.name,
+  all_resources_roles = var.automq_byoc_default_deploy_type == "k8s" ? [
+    huaweicloud_identity_role.automq_byoc_k8s_policy[0].name,
+    huaweicloud_identity_role.automq_byoc_obs_policy.name
+  ] : [
+    huaweicloud_identity_role.automq_byoc_vm_policy[0].name,
+    huaweicloud_identity_role.automq_byoc_obs_policy.name
   ]
 }
 
