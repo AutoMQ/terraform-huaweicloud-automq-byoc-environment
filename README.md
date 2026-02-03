@@ -1,6 +1,13 @@
-# HuaweiCloud AutoMQ BYOC Environment Terrafrom module
+# ⚠️ DEPRECATED
 
-![Preview](https://img.shields.io/badge/Lifecycle_Stage-Preview-blue?style=flat&logoColor=8A3BE2&labelColor=rgba)
+> [!CAUTION]
+> **This module is deprecated and no longer maintained.**
+> 
+> Please use the new deployment approach: **[AutoMQ BYOC Setup Guide](https://www.automq.com/docs/automq-cloud/getting-started/overview)**
+
+---
+
+![Deprecated](https://img.shields.io/badge/Lifecycle_Stage-Deprecated-red?style=flat&logoColor=8A3BE2&labelColor=rgba)
 
 This module is designed for deploying the AutoMQ BYOC (Bring Your Own Cloud) environment using the HuaweiCloud Provider within an HuaweiCloud environment.
 
